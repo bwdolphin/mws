@@ -8,7 +8,7 @@ module Mws
 
   class Connection
 
-    attr_reader :merchant, :orders, :order, :feeds
+    attr_reader :merchant, :order, :feeds
 
     def initialize(overrides)
       @log = Logging.logger[self]
