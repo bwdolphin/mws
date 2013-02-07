@@ -8,7 +8,7 @@ module Mws
 
   class Connection
 
-    attr_reader :merchant, :orders, :feeds
+    attr_reader :merchant, :orders, :order, :feeds
 
     def initialize(overrides)
       @log = Logging.logger[self]
@@ -20,7 +20,7 @@ module Mws
       raise Mws::Errors::ValidationError, 'An access key must be specified.' if @access.nil?
       @secret = overrides[:secret]
       raise Mws::Errors::ValidationError, 'A secret key must be specified.' if @secret.nil?
-      @orders = Apis::Orders.new self
+      @order = Apis::Orders::Order.new self
       @feeds = Apis::Feeds::Api.new self
     end
 
